@@ -67,7 +67,7 @@ public class ProductController {
 		return batchService.batchAsyncRoutine();
 	}
 
-	@PostMapping
+	@PostMapping(value = "/register")
 	public ResponseEntity<ProductResponse> registryProduct(@Valid @RequestBody ProductRequest request) {
 		ProductController.log.info("IN - product registry");
 		Products product = productRegistry.productRegistry(ApplicationUtils.toProductFromRequest(request));
@@ -104,7 +104,7 @@ public class ProductController {
 
 	}
 	
-	@PutMapping(value = "/update/{id}")
+	@PutMapping(value = "/update-item/{id}")
 	public ResponseEntity<ProductResponse> udpdateProduct(@PathVariable Long id, @RequestBody ProductUpdateRequest request){
 		ProductController.log.info("IN - update product");
 		Products products = updateProduct.updateProduct(id, ApplicationUtils.toProductFromUpdateRequest(request));
